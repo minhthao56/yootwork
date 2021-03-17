@@ -1,0 +1,16 @@
+export * from './SvgHome';
+export * from './SvgJob';
+export * from './SvgCV';
+export * from './SvgProfile';
+export * from './SvgTrash';
+export * from './SvgClock';
+export * from './SvgCamera';
+export {default as SvgCake} from '../svg/SvgCake';
+export {default as SvgPhone} from '../svg/SvgPhone';
+export {default as SvgGender} from '../svg/SvgGender';
+export {default as SvgEmail} from '../svg/SvgEmail';
+export {default as SvgMusic} from '../svg/SvgMusic';
+export {default as SvgBack} from '../svg/SvgBack';
+export {default as SvgStudy} from '../svg/SvgStudy';
+export {default as SvgHeart} from '../svg/SvgHeart';
+export {default as SvgStart} from '../svg/SvgStart';
