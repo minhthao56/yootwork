@@ -14,20 +14,20 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import Modal from 'react-native-modal';
 import {Calendar} from 'react-native-calendars';
+import {SvgClock, SvgUser} from '../../assets/svg';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {CardMyCV} from '../../components';
-import {Button, Header} from '../../components/common';
+import {Button, ButtonNomal, Header} from '../../components/common';
+import Avatar2 from '../../assets/images/avatar2.png';
+import Avatar from '../../assets/images/avatar.png';
 import BgModal from '../../assets/images/bgModal.png';
 import CVImage from '../../assets/images/cv2.png';
-import Thum0 from '../../assets/thumnail/t-0.png';
-import Thum1 from '../../assets/thumnail/t-1.png';
-import Thum2 from '../../assets/thumnail/t-2.png';
+
 import BgBlue from '../../assets/images/blur-blue.png';
 import MeetingImage from '../../assets/images/meeting-image.png';
-import {SvgClock} from '../../assets/svg';
 
 const {height, width} = Dimensions.get('window');
 const ITEM_SIZE = 255;
@@ -43,7 +43,7 @@ export const CV = ({navigation}) => {
   };
   return (
     <>
-      {isFocused ? <StatusBar backgroundColor="#222222" /> : null}
+      {isFocused ? <StatusBar backgroundColor="#262626" /> : null}
       <ScrollView
         style={styles.container}
         contentContainerStyle={{paddingBottom: 24}}>
@@ -52,18 +52,6 @@ export const CV = ({navigation}) => {
             onPress={() => navigation.navigate('CreateCV')}
             goBack={() => navigation.goBack()}
           />
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            width: '100%',
-            justifyContent: 'space-between',
-            paddingHorizontal: 32,
-            marginBottom: 32,
-          }}>
-          <Button title={'CV'} isActive={true} />
-          <Button title={'COVER LETTER'} />
         </View>
         <View style={{width: '100%', marginLeft: 32, marginBottom: 32}}>
           <Text
@@ -79,9 +67,9 @@ export const CV = ({navigation}) => {
             DANH SÁCH CV ĐÃ TẠO
           </Text>
         </View>
-        <View style={{marginLeft: 8}}>
+        <View style={{marginLeft: 8, marginBottom: 16}}>
           <Animated.FlatList
-            data={[Thum0, Thum1, Thum2]}
+            data={[Avatar, Avatar2, Avatar]}
             keyExtractor={(item, i) => i.toString()}
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -124,11 +112,6 @@ export const CV = ({navigation}) => {
             decelerationRate={Platform.OS === 'ios' ? 0 : 0.88}
           />
         </View>
-
-        {/* <LinearGradient
-          colors={['rgba(58,171,234,1)', 'rgba(72,77,233,1)']}
-          style={styles.linearGradient}
-        /> */}
         <Image
           source={BgBlue}
           style={{
@@ -142,6 +125,9 @@ export const CV = ({navigation}) => {
           }}
           blurRadius={10}
         />
+        <View style={{alignItems: 'flex-end', marginRight: 8}}>
+          <ButtonNomal title="QUẢN LÝ NÂNG CAO" width={150} />
+        </View>
         <View style={{marginTop: 24, paddingHorizontal: 8}}>
           <Text
             style={{
@@ -221,59 +207,112 @@ export const CV = ({navigation}) => {
           source={MeetingImage}
           style={{resizeMode: 'contain', width: '100%', height: 350}}
         />
-        <Text
-          style={{
-            paddingHorizontal: 16,
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '700',
-            marginBottom: 16,
-          }}>
-          Thứ Tư, 17/3/2021
-        </Text>
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <View
-            style={{
-              width: '80%',
-              backgroundColor: '#414141',
-              height: 300,
-              borderRadius: 20,
-              padding: 14,
-              paddingHorizontal: 24,
-            }}>
-            <Text
-              style={{
-                paddingHorizontal: 16,
-                color: 'white',
-                fontWeight: '700',
-                backgroundColor: 'rgba(0,0,0,0.3)',
-                alignSelf: 'flex-start',
-                padding: 4,
-                borderRadius: 20,
-                paddingVertical: 6,
-                marginBottom: 8,
-              }}>
-              Phỏng vấn lập trình
-            </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginBottom: 8,
-              }}>
-              <SvgClock />
-              <Text style={{color: 'white', marginLeft: 8}}>8:00 - 10:00</Text>
-            </View>
-            <Text style={{color: 'white', fontWeight: '700', marginBottom: 6}}>
-              Tên ứng viên:
-            </Text>
-            <View>
-              <View>
-                <Text style={{color: 'white'}}>Nguyễn Văn A</Text>
+        {/* Card calender */}
+        {[1, 2].map((item, i) => {
+          return (
+            <View key={i}>
+              <Text
+                style={{
+                  paddingHorizontal: 16,
+                  color: 'white',
+                  fontSize: 20,
+                  fontWeight: '700',
+                  marginBottom: 16,
+                  marginTop: 8,
+                }}>
+                Thứ Tư, 17/3/2021
+              </Text>
+
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderBottomWidth: 1,
+                  borderBottomColor: 'white',
+                  paddingBottom: 24,
+                  marginHorizontal: 16,
+                }}>
+                <View
+                  style={{
+                    width: '90%',
+                    backgroundColor: '#414141',
+                    borderRadius: 20,
+                    padding: 14,
+                    paddingHorizontal: 24,
+                  }}>
+                  <Text
+                    style={{
+                      paddingHorizontal: 16,
+                      color: 'white',
+                      fontWeight: '700',
+                      backgroundColor: 'rgba(0,0,0,0.3)',
+                      alignSelf: 'flex-start',
+                      padding: 4,
+                      borderRadius: 20,
+                      paddingVertical: 6,
+                      marginBottom: 8,
+                    }}>
+                    Phỏng vấn lập trình
+                  </Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      marginBottom: 8,
+                    }}>
+                    <SvgClock />
+                    <Text style={{color: 'white', marginLeft: 8}}>
+                      8:00 - 10:00
+                    </Text>
+                  </View>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontWeight: '700',
+                      marginBottom: 6,
+                    }}>
+                    Tên ứng viên:
+                  </Text>
+                  <View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        marginBottom: 8,
+                      }}>
+                      <Text style={{color: 'white'}}>Nguyễn Văn A</Text>
+                      <LinearGradient
+                        colors={['rgba(0,243,141,1)', 'rgba(0,158,255,1)']}
+                        style={{padding: 4, borderRadius: 100}}>
+                        <SvgUser />
+                      </LinearGradient>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        marginBottom: 8,
+                      }}>
+                      <Text style={{color: 'white'}}>Nguyễn Văn B</Text>
+                      <LinearGradient
+                        colors={['rgba(0,243,141,1)', 'rgba(0,158,255,1)']}
+                        style={{padding: 4, borderRadius: 100}}>
+                        <SvgUser />
+                      </LinearGradient>
+                    </View>
+                    <View
+                      style={{justifyContent: 'center', alignItems: 'center'}}>
+                      <ButtonNomal title="ĐẶT LỜI NHẮC" height={28} />
+                    </View>
+                  </View>
+                </View>
               </View>
+              {/* Card calender */}
             </View>
-          </View>
-        </View>
+          );
+        })}
       </ScrollView>
       {/* Modal */}
       <Modal isVisible={isShowModalDelete}>
